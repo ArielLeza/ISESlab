@@ -1,0 +1,157 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG",
+    "name": "Create AD User",
+    "title": "Create AD User",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Last Name",
+          "scope": "input",
+          "name": "Surname",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPNL3VLLQD1S4c4tUFds3VuNiyJtiAE4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "insert the desired AD Login name - use your email prefix (eg, if my name is \"ariel@gmail.com\", the login name would be \"ariel\")",
+          "scope": "input",
+          "name": "SamAccountName",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPOONFR18B58xLcdsYJWNgFoZ2EDbjHi",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "INPUT EmailPrefix or SIMILAR input for login name (SamAccountName)",
+          "scope": "input",
+          "name": "UserPrincipalName",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPQ4BD6WW00ttqpi6VU8yNBqYmtZVALj",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "your desired email address to use in the lab (for logins, and to recieve emails)",
+          "scope": "input",
+          "name": "EmailAddress",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPQQ6SSBLN4CRYKgCXWLch9Cj0PCwhhH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Insert Password",
+          "scope": "input",
+          "name": "InputAccountSecurePassword",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPY85X4G7I29PSgmuKFpegLz39ONDTYE",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "name of the new AD User",
+          "scope": "input",
+          "name": "ObjectName",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPMLROKT6Z36yM87K9Y3FXcaWYImh68h",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "First Name",
+          "scope": "input",
+          "name": "GivenName",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01GRPN6YHM112366mdWZGB4tf2KZZdFjZcL",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "PowerShell Automation",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": true,
+      "display_name": "Create AD User",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "windows.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01GKMNQQ84UEG71hFcmswJ9cl47ZdWO2pi0",
+        "name": "Execute Powershell Script",
+        "title": "Execute Powershell Script Get-ADUser",
+        "type": "windows.execute_powershell_script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Powershell Script Get-ADUser",
+          "execute_remote_file": false,
+          "powershell_script": "New-ADUser -Name \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPMLROKT6Z36yM87K9Y3FXcaWYImh68h$\" -GivenName \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPN6YHM112366mdWZGB4tf2KZZdFjZcL$\" -Surname \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPNL3VLLQD1S4c4tUFds3VuNiyJtiAE4$\" -SamAccountName \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPOONFR18B58xLcdsYJWNgFoZ2EDbjHi$\" -UserPrincipalName \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPQ4BD6WW00ttqpi6VU8yNBqYmtZVALj$@ebc.iseslab.cisco.com\" -EmailAddress \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPQQ6SSBLN4CRYKgCXWLch9Cj0PCwhhH$\" -AccountPassword (ConvertTo-SecureString \"$workflow.definition_workflow_01GKM1QQZI0S22MlkwgESqRILq2JsAQaFOG.input.variable_workflow_01GRPY85X4G7I29PSgmuKFpegLz39ONDTYE$\" -AsPlainText -force) -Enabled $true",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          },
+          "working_directory": "C:\\Users\\Administrator"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01FzsThUQ3yXAswxOItEqLAIiGLEPlIt0",
+      "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj"
+    ]
+  },
+  "categories": {
+    "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj": {
+      "unique_name": "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj",
+      "name": "Prod Workflows",
+      "title": "Prod Workflows",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
