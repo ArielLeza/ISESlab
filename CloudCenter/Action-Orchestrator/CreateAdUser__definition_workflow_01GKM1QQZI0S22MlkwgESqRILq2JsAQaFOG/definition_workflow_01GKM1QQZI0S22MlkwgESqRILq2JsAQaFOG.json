@@ -140,7 +140,8 @@
     ],
     "categories": [
       "category_01FzsThUQ3yXAswxOItEqLAIiGLEPlIt0",
-      "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj"
+      "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj",
+      "category_01GTGTB4JJ92M01ESKA51MZKzIL4NwqWlJq"
     ]
   },
   "categories": {
@@ -148,6 +149,15 @@
       "unique_name": "category_01GKM3PXVO4QP60ux7Mr6eLUDf53WCUQaYj",
       "name": "Prod Workflows",
       "title": "Prod Workflows",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_01GTGTB4JJ92M01ESKA51MZKzIL4NwqWlJq": {
+      "unique_name": "category_01GTGTB4JJ92M01ESKA51MZKzIL4NwqWlJq",
+      "name": "Active Directory",
+      "title": "Active Directory",
       "type": "basic.category",
       "base_type": "category",
       "category_type": "custom",
